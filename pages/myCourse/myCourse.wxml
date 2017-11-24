@@ -1,0 +1,61 @@
+<view class="container">
+      <view class="header">
+        <image class="header_avatar" src="{{teacher_info.avatar}}"></image>
+        <text class="header_nick">{{teacher_info.nick}}</text>
+        <navigator class="header_modifyTime" wx:if="{{apply_btn =='1'}}">修改时段</navigator>
+      </view>
+      <view class="time-table">
+        <view class="time-icon">
+          <view class="open_time_chunk"></view>
+          <text>开放时段</text>
+        </view>
+        <view class="time-icon">
+          <view class="exper_course_chunk"></view>
+          <text>体验课程</text>
+        </view>
+        <view class="time-icon">
+          <view class="fixed_course_chunk"></view>
+          <text>固定课程</text>
+        </view>
+        <view class="time-icon">
+          <view class="unfixed_course_chunk"></view>
+          <text>非固定课程</text>
+        </view>
+      </view>
+      <view class="myCourse">
+        <view class="course-header">
+          <view class="week-time" wx:for="{{header}}" wx:key="index">
+            <text>{{item}}</text>
+          </view>
+        </view>
+      </view>
+      <view class="course-main">
+        <view class="schedule">
+          <view wx:for="{{daily_time}}" 
+          wx:key="index" 
+          class="{{item>=10 ? 'schedule_changed' : ''}}">
+            {{item}}:00
+          </view>
+        </view>
+        <view class="course-table">
+          <view class="content" wx:for="{{header}}" wx:key="index">
+            <view class="content_column">
+              <view 
+              class="content_chunk {{time?'openTime':''}}" 
+              wx:for="{{body[index].open_time}}" 
+              wx:for-item="time" wx:for-index="j" wx:key="j">
+              </view>
+            </view>
+          </view>
+          <view 
+          wx:if="{{course_detail.length!==0}}"
+          wx:for="{{course_detail}}"
+          style="left:{{course.left}};top:{{course.top}}rpx;line-height:{{course.height}}rpx;height:{{course.height}}rpx;background:{{course.color}}"
+          wx:for-item="course" wx:key="index"
+          class="classInfo"
+          >
+            {{course.student_name}}
+          </view>
+        </view>
+      </view>
+</view>

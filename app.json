@@ -1,0 +1,40 @@
+{
+  "pages": [
+    "pages/myCourse/myCourse",
+    "pages/myCompensation/myCompensation"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#1296db",
+    "navigationBarTitleText": "妙克人才艺术基地",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#999",
+    "selectedColor": "#1296db",
+    "borderStyle": "white",
+    "backgroundColor": "#f6f8f9",
+    "position": "bottom",
+    "list": [
+      {
+        "pagePath": "pages/myCourse/myCourse",
+        "iconPath": "imgs/icon_course.png",
+        "selectedIconPath": "imgs/icon_course_HL.png",
+        "text": "排课"
+      },
+      {
+        "pagePath": "pages/myCompensation/myCompensation",
+        "iconPath": "imgs/icon_compensation.png",
+        "selectedIconPath": "imgs/icon_compensation_HL.png",
+        "text": "薪资"
+      }
+    ]
+  },
+  "netWorkTimeout": {
+    "request": 10000,
+    "connectSocket": 10000,
+    "uploadFile": 10000,
+    "downloadFile": 10000
+  },
+  "debug": false
+}
