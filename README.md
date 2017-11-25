@@ -1,2 +1,0 @@
-# pnlTeacherApplet
-pnlTeacherApplet

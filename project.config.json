@@ -10,7 +10,7 @@
 	"compileType": "miniprogram",
 	"libVersion": "1.6.6",
 	"appid": "wxcf9eee46f5254d02",
-	"projectname": "pnlTeacherApplet",
+	"projectname": "applet",
 	"condition": {
 		"search": {
 			"current": -1,

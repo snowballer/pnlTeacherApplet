@@ -40,7 +40,8 @@
         <view class="course-table">
           <view class="content" wx:for="{{header}}" wx:key="index">
             <view class="content_column">
-              <view 
+              <view
+              wx:if="{{j >= start_time*2}}" 
               class="content_chunk {{time?'openTime':''}}" 
               wx:for="{{body[index].open_time}}" 
               wx:for-item="time" wx:for-index="j" wx:key="j">
@@ -53,8 +54,29 @@
           style="left:{{course.left}};top:{{course.top}}rpx;line-height:{{course.height}}rpx;height:{{course.height}}rpx;background:{{course.color}}"
           wx:for-item="course" wx:key="index"
           class="classInfo"
+          data-course="{{course}}"
+          bindtap="popCourse"
           >
             {{course.student_name}}
+          </view>
+        </view>
+      </view>
+      <!--弹出层-->
+      <view class="mask" wx:if="{{showPopup}}">
+        <view class="course-popup">
+          <view class="title" style="background:{{pop_info.color}}">
+            <image src="../../imgs/{{pop_info.imgSrc}}.png"></image>
+          </view>
+          <view class="pop-content">
+            <view class="pop-time">
+            {{pop_info.class_info2}}
+            </view>
+            <view class="pop-course">
+            {{pop_info.class_info1}} : {{pop_info.class_info3}}
+            </view>
+            <view class="pop-button" bindtap="closeCourse">
+              我知道了
+            </view>
           </view>
         </view>
       </view>

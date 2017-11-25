@@ -69,6 +69,18 @@ export function fetchColor(type){
   }
 }
 
+export function fetchImgSrc(type){
+  if (type===1){
+    return 'icn_lessonlocked';
+  }
+  if (type===2){
+    return 'icn_lessonfree';
+  }
+  if (type===3){
+    return 'icn_lessontemp';
+  }
+}
+
 export function fetchShadowColor(time,isChanged,isModify){
   if (!isModify){
     if (time[1] && isChanged){
