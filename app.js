@@ -9,7 +9,7 @@ App({
           wx.getUserInfo({
             success: function (res) {
               //保存本地用户信息
-              wx.setStorageSync("userInfo", res.userInfo)
+              wx.setStorageSync("userInfo", res.userInfo);
             }
           })
           if (res.code) {
@@ -26,9 +26,9 @@ App({
                 console.log(res);
                 const session_key = res.data.data.session_key;
                 wx.setStorageSync('session_key', session_key);
-                wx.switchTab({
-                  url: '../myCourse/myCourse'
-                });
+                // wx.switchTab({
+                //   url: '../myCourse/myCourse'
+                // });
               }
             })
           } else {
@@ -38,6 +38,7 @@ App({
       });
   },
   globalData: {
-    userInfo: null
+    userInfo: null,
+    base_url:'http://www.easy-mock.com/mock/59ae143ce0dc6633419ca59a/pnlTeacher'
   }
 })

@@ -1,0 +1,117 @@
+<scroll-view scroll-y="{{!popPicker}}" class="container">
+  <view class="header">
+    <view class="header_date" bindtap="openPicker">
+      <view>
+        生效日期：{{selectedDate}}
+      </view>
+      <image src="../../imgs/icn_dropdown.png"></image>
+    </view>
+  </view>
+  <view class="myCourse">
+    <view class="course-header">
+      <view class="week-time" wx:for="{{weekTime}}" wx:key="index">
+        <text>{{item}}</text>
+      </view>
+    </view>
+  </view>
+  <view class="course-main">
+        <view class="schedule">
+          <view wx:for="{{dailyTime}}" 
+          wx:key="index" 
+          class="{{item>=10 ? 'schedule_changed' : ''}}">
+            {{item}}:00
+          </view>
+        </view>
+        <view class="course-table">
+          <view class="content" wx:for="{{weekTime}}" wx:key="index">
+            <view class="content_column">
+              <view
+              wx:if="{{i>=(startTime*2) && i<(endTime*2)}}" 
+              class="content_chunk {{!time[1]&&time[0]?'changeable':''}} {{time[1]?'opened':''}} {{!time[0]&&!time[1]?'immutable':''}}"
+              data-time="{{time}}"
+              data-col="{{index}}"
+              data-row="{{i}}"
+              bindtap="changeCourse"
+              style="box-shadow: {{time[1]&&time_change[48*index+i] ?'inset 0 0 0 4rpx #FD5E02':''}} {{!time[1] && time[0]&&time_change[48*index+i] ?'inset 0 0 0 4rpx #1DC664':''}}"
+              wx:for="{{time_grid[index+1]}}" 
+              wx:for-item="time" wx:for-index="i" wx:key="i">
+                <image 
+                wx:if="{{time[2]&&time_change[48*index+i]}}"
+                src="{{time[1]?'../../imgs/delete.png':''}} {{!time[1] && time[0]?'../../imgs/add.png':''}}" ></image>
+                <view 
+                class="pop-tip {{popTip?'pop-tip-top':''}}">
+                  由于人员安排原因，此时段不可选择
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+  </view>
+  <view class="footer {{change_items.length!==0?'actived':''}}" bindtap="postChangeItems">
+    下一步
+  </view>
+  <!--选择日期-->
+  <view class="mask" wx:if="{{popPicker}}">
+    <view class="datetime_picker {{showTopPicker?'datetime_picker_top':''}}">
+      <view class="handle_picker">
+        <view bindtap="cancelDatePicker">取消</view>
+        <view>选择生效日期</view>
+        <view bindtap="confirmDatePicker">确定</view>
+      </view>
+      <picker-view style="width: 100%; height: 350rpx;margin-top:40rpx;" value="{{value}}" bindchange="changeDate">
+        <picker-view-column>
+          <view wx:for="{{years}}" wx:for-index="i" wx:key="i" style="line-height: 68rpx;text-align:center">{{item}}年</view>
+        </picker-view-column>
+        <picker-view-column>
+          <view wx:for="{{months}}" wx:for-index="j" wx:key="j" style="line-height: 68rpx;text-align:center">{{item}}月</view>
+        </picker-view-column>
+        <picker-view-column>
+          <view wx:for="{{days}}" wx:for-index="k" wx:key="k" style="line-height: 68rpx;text-align:center">{{item}}日</view>
+        </picker-view-column>
+      </picker-view>
+    </view>
+  </view>
+  <view class="mask" wx:if="{{popCourse}}">
+    <view class="pop-content {{showTopContent?'pop-content-top':''}}">
+      <view class="content-header">
+        您将申请从<text class="dateColor">{{selectedDate}}</text>开始变更开放时间段，
+        <text wx:if="{{last_apply_exetime}}">您上次在{{last_apply_exetime}}变更开放时段，
+          <text wx:if="{{money}}">距离本次变更生效日期不足3个月，将产生<text class="dateColor">{{money}}元</text>的惩罚扣款。</text>
+          <text wx:else>本次修改可以免费进行。</text>
+        </text> 
+        <text wx:else>您之前未变更过开放时段，本次修改可以免费进行。</text>
+      </view>
+      <view class="content-tip">
+        <text wx:if="{{student_class_list.length>0}}">变更将影响以下<text class="dateColor">{{student_class_list.length}}</text>位学生的课程：（如果要取消非开放时间的固定课，请和妙克艺术人才基地服务号联系）</text>
+        <text wx:else>本次修改未影响固定课程（如果要取消非开放时间的固定课，请和妙克艺术人才基地服务号联系）。</text>
+      </view>
+      <view class="course-list">
+        <view 
+        class="student_class"
+        wx:for="{{student_class_list}}" 
+        wx:for-item="info" wx:for-index="i" wx:key="i">
+          <view class="leftBorder"></view>
+          <view class="student_nick">{{info.nick}}：固定课</view>
+          <view 
+          class="student_course"
+          wx:for="{{info.class_list}}" 
+          wx:for-item="course" wx:for-index="j" wx:key="j">
+            <text>{{course.count}}节</text>
+            <text>周{{course.week}}{{course.time_class}}</text> 
+            <text>{{course.is_conflict}}</text>
+          </view>
+        </view>
+      </view>
+      <view class="pop-button">
+        <view bindtap="cancelApplication">取消</view>
+        <view bindtap="confirmApplication">确认申请</view>
+      </view>
+    </view>
+  </view>
+  <view class="successMask" wx:if="{{successVisible}}">
+    <view class="successTip">
+    <image src="../../imgs/icn_finished.png"></image>
+    <text>正在提交中...</text>
+  </view>
+  </view>
+</scroll-view>

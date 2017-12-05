@@ -1,0 +1,158 @@
+<!--pages/MySalary/MySalary.wxml-->
+<view class="container" wx:if="{{showMySalary}}">
+  <view class='header'>
+    <view class="notice">
+      <text class="user-motto">申明：薪资数据为自动结算结果，后续人工审核后可能发生变更  </text>
+    </view>
+    <view class="userinfo">
+      <image class="userinfo-avatar" src="{{dataItems.head_icon}}" background-size="cover"></image>
+      <text class="userinfo-nickname">{{dataItems.nick}}</text>
+    </view>
+    <view class="calendarTab">
+      <label><image  src="../../imgs/icon_left.png" background-size="cover"></image></label>
+      <span>{{yearIpt}}/{{monthIpt}}</span>
+      <label><image  src="../../imgs/icon_right.png" background-size="cover"></image></label>
+    </view>
+  </view>
+  <view class='middle'>
+    <view class="salaryList">
+      <view class="flex-wrp" style="flex-direction:row;">
+        <view class="flex-item">
+          <text class="title">基本薪资</text>
+          <text class="money {{dataItems.total_salary>=0?'green':''}} {{dataItems.total_salary<0?'debit':''}} {{dataItems.total_salary=='待结算'?'blue':''}}">¥{{dataItems.total_salary}}</text>
+          <text class="identificat">更新至{{dataItems.update_day}}</text>
+        </view>
+        <view class="flex-item" bindtap="activePage">
+          <text class="title">活动结算</text>
+          <text class="money {{dataItems.activity_salary>=0?'green':''}} {{dataItems.activity_salary<0?'debit':''}} {{dataItems.activity_salary=='待结算'?'blue':''}}">¥{{dataItems.activity_salary}}</text>
+          <text class="identificat">点击查看详情 > </text>
+        </view>
+      </view>
+    </view>
+    <view class="salaryTab">
+      <view class='salaryTop'>
+        <view class="flex-wrp" style="flex-direction:row;">
+          <view class="flex-item {{currentTab=='0' ? 'e' : ''}}" id="0" bindtap="SwichSalary">
+            <text class="money {{dataItems.basic_salary>=0?'green':''}} {{dataItems.basic_salary<0?'debit':''}} {{dataItems.basic_salary=='待结算'?'blue':''}}">{{dataItems.basic_salary}}元</text>
+            <text class="salaryType">基础薪资</text>
+            <image  src="../../imgs/icon_top.png" background-size="cover"></image> 
+          </view>
+          <view class="flex-item {{currentTab=='1' ? 'e' : ''}}" id="1" bindtap="SwichSalary">
+            <text class="money  {{dataItems.leave_salary>=0?'green':''}} {{dataItems.leave_salary<0?'debit':''}} {{dataItems.leave_salary=='待结算'?'blue':''}}">{{dataItems.leave_salary}}元</text>
+            <text class="salaryType">请假扣款</text>
+            <image  src="../../imgs/icon_top.png" background-size="cover"></image> 
+          </view>
+          <view class="flex-item {{currentTab=='2' ? 'e' : ''}}" id="2" bindtap="SwichSalary">
+            <text class="money {{dataItems.punish_salary>=0?'green':''}} {{dataItems.punish_salary<0?'debit':''}} {{dataItems.punish_salary=='待结算'?'blue':''}}">{{dataItems.punish_salary}}元</text>
+            <text class="salaryType">处罚</text>
+            <image  src="../../imgs/icon_top.png" background-size="cover"></image> 
+          </view>
+        </view>
+      </view>
+      <view class="salaryBox" bindchange="BindChange">
+      
+        <view class="flex-wrp {{currentTab=='0' ? 'e' : ''}}" style="flex-direction:row;">
+          <view class="flex-item">
+            <text class='money'>{{middleDataLeft.class_25_money}}</text>
+            <text>{{middleDataLeft.class_25_num}}节</text>
+            <text>课时费</text>
+            <text>(25min)</text>
+          </view>
+          <view class="flex-item">
+            <text class='money'>{{middleDataLeft.class_50_money}}</text>
+            <text>{{middleDataLeft.class_50_num}}节</text>
+            <text>课时费</text>
+            <text>(50min)</text>
+          </view>
+          <view class="flex-item">
+            <text class='money'>{{middleDataLeft.open_time_money}}</text>
+            <text>{{middleDataLeft.open_time_hour}}h</text>
+            <text>开放时段</text>
+            <text></text>
+          </view>
+          <view class="flex-item">
+            <text class='money'>{{middleDataLeft.extra_time_money}}</text>
+            <text>{{middleDataLeft.extra_time_hour}}h</text>
+            <text>额外时段</text>
+            <text></text>
+          </view>
+        </view>
+
+        <view class="flex-wrp {{currentTab=='1' ? 'e' : ''}}" style="flex-direction:row;">
+          <view class="flex-item">
+            <text class='money'>{{middleDataMid.absence_money}}</text>
+            <text>{{middleDataMid.absence_hour}}h</text>
+            <text>提前请假</text>
+            <text>(时段内)</text>
+          </view>
+          <view class="flex-item">
+            <text class='money'>{{middleDataMid.all_money}}</text>
+            <text>{{middleDataMid.all_hour}}h</text>
+            <text>临时请假</text>
+            <text>(时段内)</text>
+          </view>
+          <view class="flex-item">
+            <text class='money'>{{middleDataMid.pause_money}}</text>
+            <text>{{middleDataMid.pause_hour}}h</text>
+            <text>矿工</text>
+            <text>(时段内)</text>
+          </view>
+          <view class="flex-item">
+            <text class='money'>{{middleDataMid.tmp_money}}</text>
+            <text>{{middleDataMid.tmp_hour}}h</text>
+            <text>病假</text>
+            <text>(时段内)</text>
+          </view>
+        </view>
+
+        <view class="flex-wrp {{currentTab=='2' ? 'e' : ''}}" style="flex-direction:row;">
+          <view class="flex-item">
+            <text class='money'>{{middleDataRig.bad_grade_punish_money}}</text>
+            <text>{{middleDataRig.bad_grade_punish_number}}次</text>
+            <text>迟到</text>
+            <text></text>
+          </view>
+          <view class="flex-item">
+            <text class='money'>{{middleDataRig.complain_punish_money}}</text>
+            <text>{{middleDamiddleDataRigtaLeft.complain_punish_number}}次</text>
+            <text>被投诉</text>
+            <text></text>
+          </view>
+          <view class="flex-item">
+            <text class='money'>{{middleDataRig.late_punish_money}}</text>
+            <text>{{middleDataRig.late_punish_number}}次</text>
+            <text>差评</text>
+            <text></text>
+          </view>
+          <view class="flex-item">
+            <text class='money'>{{middleDataRig.standard_action_money}}</text>
+            <text>{{middleDataRig.standard_action_number}}次</text>
+            <text>非标准化动作</text>
+            <text></text>
+          </view>
+        </view>
+        
+      </view>
+    </view>
+  </view>
+  <view class='bottom'>
+    <!--日历展示，可点击查询数据日期背景灰色-->
+		<view class="calendarBox">
+      <view class='calendTitle'>
+        <label>每日详情</label>
+      </view>
+			<view class="weekList">
+				<label>日</label>
+				<label>一</label>
+				<label>二</label>
+				<label>三</label>
+				<label>四</label>
+				<label>五</label>
+				<label>六</label>
+			</view>
+			<view class="calendarList">
+          <view wx:for="{{CalendarData}}" bindtap="allowClick" id="{{index}}" class="{{item.type==1?'gray':''}} {{item.type==3?'current':''}}" wx:key="index"><text>{{item.vals}}</text></view>
+      </view>
+    </view>
+  </view>
+</view>

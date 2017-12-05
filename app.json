@@ -1,7 +1,15 @@
 {
   "pages": [
     "pages/myCourse/myCourse",
-    "pages/myCompensation/myCompensation"
+    "pages/modifyTime/modifyTime",
+    "pages/subSuccess/subSuccess",
+    "pages/subFail/subFail",
+    "pages/applyFail/applyFail",
+    "pages/MySalary/MySalary",
+    "pages/SalaryList/SalaryList",
+    "pages/Activity/Activity",
+    "pages/noData/noData",
+    "pages/notAvailable/notAvailable"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -23,7 +31,7 @@
         "text": "排课"
       },
       {
-        "pagePath": "pages/myCompensation/myCompensation",
+        "pagePath": "pages/MySalary/MySalary",
         "iconPath": "imgs/icon_compensation.png",
         "selectedIconPath": "imgs/icon_compensation_HL.png",
         "text": "薪资"

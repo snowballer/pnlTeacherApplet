@@ -1,8 +1,8 @@
-<view class="container">
+<scroll-view  scroll-y="{{!showPopup}}" class="container">
       <view class="header">
         <image class="header_avatar" src="{{teacher_info.avatar}}"></image>
         <text class="header_nick">{{teacher_info.nick}}</text>
-        <navigator class="header_modifyTime" wx:if="{{apply_btn =='1'}}">修改时段</navigator>
+        <navigator url="../modifyTime/modifyTime" hover-class="navigator-hover" class="header_modifyTime" wx:if="{{apply_btn =='1'}}">修改时段</navigator>
       </view>
       <view class="time-table">
         <view class="time-icon">
@@ -51,7 +51,7 @@
           <view 
           wx:if="{{course_detail.length!==0}}"
           wx:for="{{course_detail}}"
-          style="left:{{course.left}};top:{{course.top}}rpx;line-height:{{course.height}}rpx;height:{{course.height}}rpx;background:{{course.color}}"
+          style="left:{{course.left}};top:{{course.top}};line-height:{{course.height}}rpx;height:{{course.height}}rpx;background:{{course.color}}"
           wx:for-item="course" wx:key="index"
           class="classInfo"
           data-course="{{course}}"
@@ -63,7 +63,7 @@
       </view>
       <!--弹出层-->
       <view class="mask" wx:if="{{showPopup}}">
-        <view class="course-popup">
+        <view class="course-popup {{showPopCourse?'course-popup-middle':''}}">
           <view class="title" style="background:{{pop_info.color}}">
             <image src="../../imgs/{{pop_info.imgSrc}}.png"></image>
           </view>
@@ -80,4 +80,4 @@
           </view>
         </view>
       </view>
-</view>
+</scroll-view>

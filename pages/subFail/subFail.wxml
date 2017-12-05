@@ -1,0 +1,5 @@
+<view class="container">
+  <image src="../../imgs/icn_fail.png"></image>
+  <text>抱歉，您的申请提交失败，请重试。</text>
+  <view bindtap="goApplyTime">返回申请页面</view>
+</view>

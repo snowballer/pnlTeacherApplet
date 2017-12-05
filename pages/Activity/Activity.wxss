@@ -1,0 +1,99 @@
+/* pages/Activity/Activity.wxss */
+/* pages/SalaryList/SalaryList.wxss */
+page{
+  background: rgb(238,238,238);
+}
+.header,.middle,.bottom{
+  background: #fff;
+}
+.header{
+  padding-top:20rpx;
+  position: relative;
+  width:100%;
+  text-align: center;
+  height:200rpx;
+}
+.header text{
+  display: block
+}
+.header .money.red{
+ color: #FF594C;
+}
+.header .money.green{
+  color: #3DBD7D;
+ }
+.header .time{
+  height:40rpxm;
+  line-height: 40rpx;
+  font-size: 28rpx;
+  color: #353232;
+}
+.header .money{
+  height:80rpxm;
+  line-height: 80rpx;
+  font-size: 60rpx;
+}
+.header .mark{
+  height:34rpxm;
+  line-height: 34rpx;
+  font-size: 24rpx;
+  color: #999;
+}
+.flex-wrp{
+  display:flex;
+}
+.bottom{
+  margin-top:20rpx;
+  width:100%;
+  min-height:1000rpx;
+}
+.eventView{
+  height:120rpx;
+  line-height: 120rpx;
+  width:90%;
+  padding: 0 5%;
+  color: #353232;
+  font-size: 28rpx;
+  border-bottom: #ddd 1px solid;
+}
+.eventView .eLeft{
+  width:75%;
+  float: left;
+}
+.eventView .eLeft image{
+  width:75rpx;
+  height:80rpx;
+  float: left;
+}
+.eventView .eRight{
+  width:25%;
+  text-align: right;
+  float: right;
+}
+.eventView view.eLeft{
+  padding: 20rpx 0;
+  line-height: 40rpx;
+} 
+.eventView view.eRight{
+  line-height: 120rpx;
+  float: right;
+} 
+.eventView .eLeft text{
+  color: #4a4a4a;
+  font-size: 24rpx;
+  float: left;
+  padding-left: 20rpx;
+  line-height: 80rpx;
+}
+.eventView view.eRight{
+  text-align:right;
+}
+.eventView view.eRight.green{
+  color: #3DBD7D;
+}
+.eventView view.eRight.red{
+  color: #FF594C;
+}
+.eventView view.eRight.blue{
+   color:#64B5F6
+}

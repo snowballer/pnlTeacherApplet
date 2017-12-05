@@ -1,0 +1,4 @@
+<view class="container">
+  <image src="../../imgs/icn_notAvailable.png"></image>
+  <text>您还未入职哦~ 暂无数据</text>
+</view>

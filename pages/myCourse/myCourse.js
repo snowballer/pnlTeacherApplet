@@ -17,6 +17,7 @@ Page({
     daily_time:[],
     course_detail:[],
     showPopup:false,
+    showPopCourse:false,
     pop_info:{}
   },
 
@@ -79,7 +80,8 @@ Page({
           if(course.classes.length !== 0){
             course.classes.forEach(item=>{
               const col_width = 100;
-              const top = fetchTop(item.start_hour,item.start_min,_this.data.start_time);
+              let top = fetchTop(item.start_hour,item.start_min,_this.data.start_time);
+              top = top===0?0:`${top}rpx`;
               const height = fetchHeight(item.start_min,item.class_length);
               const color = fetchColor(item.class_type);
               const imgSrc = fetchImgSrc(item.class_type);
@@ -102,15 +104,28 @@ Page({
     })
   },
   popCourse(e){
+    if(timer){
+      clearTimeout(timer);
+    }
     this.setData({
       showPopup:true,
       pop_info:e.currentTarget.dataset.course
     })
+    var timer = setTimeout(()=>{
+      this.setData({
+        showPopCourse:true
+      })
+    },100)
   },
   closeCourse(){
     this.setData({
-      showPopup:false
+      showPopCourse:false
     })
+    var timer = setTimeout(()=>{
+      this.setData({
+        showPopup:false
+      })
+    },400)
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

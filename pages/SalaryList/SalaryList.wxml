@@ -1,0 +1,51 @@
+<!--pages/MySalary/MySalary.wxml-->
+<view class="container" wx:if="{{showMySalary}}">
+  <view class="header">
+      <text class="time">{{dataItems.date}}</text>
+      <text class="money">¥{{dataItems.total}}</text>
+      <text class="mark">当日薪资</text>
+  </view>
+  <view class="middle">
+    <view class="salaryTab">
+      <view class='salaryTop'>
+        <view class="flex-wrp" style="flex-direction:row;">
+          <view class="flex-item" id="0">
+            <text class='money'>{{dataItems.base}}元</text>
+            <text class="salaryType">基础薪资</text>
+          </view>
+          <view class="flex-item" id="1">
+            <text class='money red'>{{dataItems.leave}}元</text>
+            <text class="salaryType">请假扣款</text>
+          </view>
+          <view class="flex-item" id="2">
+            <text class='money red'>{{dataItems.punish}}元</text>
+            <text class="salaryType">处罚</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+<view class="bottom">
+  <view class="salaryEvent">
+    <view class='todayEvent'>
+        <label>当日事件</label>
+    </view>
+  </view>
+  <view class="eventList">
+    <view class="eventView">
+      <text class="eLeft">事件</text>
+      <text class="eRight">薪资影响</text>
+    </view>
+    <view class="eventView" wx:for="{{event_list}}">
+      <view class="eLeft">
+        <text>{{item.event}}</text>
+        <text>{{item.time}}</text>
+      </view>
+      <view class="eRight">
+        <text class="green">{{item.money}}元</text>
+      </view>
+    </view>
+    
+  </view>
+</view>
+</view>

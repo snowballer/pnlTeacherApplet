@@ -1,0 +1,22 @@
+<!--pages/MySalary/MySalary.wxml-->
+<view class="container" wx:if="{{showMySalary}}">
+  <view class="header">
+      <text class="time">{{yearIpt+ "." + monthIpt}}</text>
+      <text class="money red">¥{{dataItems.total}}</text>
+      <text class="mark">本月活动</text>
+  </view>
+  <view class="bottom">
+    <view class="eventList">
+      <view class="eventView" wx:for="{{detail}}">
+        <view class="eLeft">
+          <image  src="../../imgs/icon.png" background-size="cover"></image>
+          <text>{{item.name}}</text>
+        </view>
+        <view class="eRight {{item.money>=0?'green':''}} {{item.money<0?'red':''}} {{item.money=='待结算'?'blue':''}}">
+          <text>{{item.money}}</text>
+          <text wx:if="{{item.activity_type==2}}">元</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

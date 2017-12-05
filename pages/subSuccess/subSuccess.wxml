@@ -1,0 +1,7 @@
+<view class="container">
+  <image src="../../imgs/icn_success.png"></image>
+  <text>您已于{{time_apply}} 提交了变更开放</text>
+  <text>时间申请。培训师会尽快审核您的申</text>
+  <text>请，请耐心等待吧。</text>
+  <view bindtap="goMyCourse">返回我的排课</view>
+</view>

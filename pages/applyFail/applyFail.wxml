@@ -1,0 +1,7 @@
+<view class="container">
+  <image src="../../imgs/icn_decline.png"></image>
+  <text>抱歉，您于{{time_apply}} 提交的开放</text>
+  <text>时间申请未被批准。您可在2017.9.17</text>
+  <text>16:40后再次进行申请。</text>
+  <view bindtap="goMyCourse">返回我的排课</view>
+</view>

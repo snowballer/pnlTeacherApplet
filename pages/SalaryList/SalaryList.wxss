@@ -1,0 +1,145 @@
+/* pages/SalaryList/SalaryList.wxss */
+page{
+  background: rgb(238,238,238);
+}
+.header,.middle,.bottom{
+  background: #fff;
+}
+.header{
+  position: relative;
+  width:100%;
+  text-align: center;
+  height:200rpx;
+}
+.header text{
+  display: block
+}
+.header .money.red{
+ color: #FF594C;
+}
+.header .money.green{
+  color: #3DBD7D;
+ }
+.header .time{
+  height:40rpxm;
+  line-height: 40rpx;
+  font-size: 28rpx;
+  color: #353232;
+}
+.header .money{
+  height:80rpxm;
+  line-height: 80rpx;
+  font-size: 60rpx;
+}
+.header .mark{
+  height:34rpxm;
+  line-height: 34rpx;
+  font-size: 24rpx;
+  color: #999;
+}
+.flex-wrp{
+  display:flex;
+}
+.middle{ width:100%;}
+.salaryTab{
+  padding-top: 20rpx;
+  width:100%;
+}
+.salaryTop{
+  height:120rpx;
+  border-bottom:#ddd 1rpx solid;
+  }
+.salaryTab .flex-item{
+  width: 400rpx;
+  font-size: 26rpx;
+  text-align: center;
+  color: #666;
+  position: relative;
+}
+.salaryTop .flex-item{
+   height: 80rpx;
+}
+.salaryBox .flex-item{
+   height: 170rpx;
+}
+.salaryTop .flex-item{
+  border-right:#ddd 1rpx solid;
+}
+.salaryTab .money{
+  font-size: 32rpx;
+  color: #3DBD7D;
+  display: block;
+  line-height: 32rpx;
+}
+.salaryTab .money.red{
+  color: #FF594C;
+}
+.salaryTab .salaryType{
+  font-size: 24rpx;
+  color: #353232 ;
+  display: block;
+  line-height: 24rpx;
+  margin-top:16rpx;
+}
+.salaryTab .money.debit{
+  color:#FF594C;
+}
+.bottom{
+  margin-top:20rpx;
+  width:100%;
+  min-height:800rpx;
+}
+.salaryEvent{
+  padding: 36rpx 20rpx 20rpx;
+}
+.todayEvent{
+  height:28rpx;
+  border-left: #D8D8D8 12rpx solid;
+  text-indent: 20rpx;
+  font-size: 28rpx;
+  line-height: 28rpx;
+  color: #353232;
+}
+.eventView{
+  height:120rpx;
+  line-height: 120rpx;
+  width:90%;
+  padding: 0 5%;
+  color: #353232;
+  font-size: 28rpx;
+  border-bottom: #ddd 1px solid;
+}
+.eventView .eLeft{
+  width:80%;
+  float: left;
+}
+.eventView .eRight{
+  width:20%;
+  text-align: right;
+  float: right;
+}
+.eventView view.eLeft{
+  padding: 20rpx 0;
+  line-height: 40rpx;
+} 
+.eventView view.eRight{
+  line-height: 120rpx;
+  float: right;
+} 
+.eventView .eLeft text:nth-child(2){
+  color: #999;
+  font-size: 24rpx;
+  display: block;
+}
+.eventView view.eRight{
+  text-align:right;
+}
+.eventView view.eRight text.green{
+  color: #3DBD7D;
+}
+.eventView view.eRight text.red{
+  color: #FF594C;
+}
+.eventView view text{ 
+  display: block;
+}
